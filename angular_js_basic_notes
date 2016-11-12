@@ -1,0 +1,154 @@
+Angular JS                                      12-NOV-2016                                                         Green Bubbles_venture_city
+
+
+Intro:
+
+web application:
+
+    Application at the server that responses to the request by the client.
+
+
+    browser-------->server-------->database
+
+    browser<-------server<--------database
+    
+    
+Java Script: Client side scripting Language.
+
+
+Angular JS:
+
+    Google inc. developers. misko and adam 2009 .
+    
+    Main Idea was to ease the process of mapping client and server.
+    
+    Uses JavaScript. and is used for server side scripting.
+    
+    * Single Page Application:  first time request and response from the server containing html and assests(javascript) but the next time onwards only fetch the JSON data only which would faster the excecution of the process.
+    
+    
+    json format:
+    
+    [{key:value},....]
+    
+    
+    
+    MVC:
+    
+    Model : data[JSON]
+    view : HTML
+    controller: business logic.
+    
+    follows 2 way binding.
+    
+    
+    
+    
+ USES:
+    *easy to code
+    *responsive 
+    *MVC
+    
+    
+Modules:
+
+
+    Module is a container for all the code similar to main method of main program.
+    specify ng-app to tell that it is a module.
+    
+
+ex:
+
+  --------------  index.html-------
+
+
+        <html ng-app="appname">
+
+
+
+
+
+        </html>
+
+
+
+---------js-------------------------
+    var app=angular.module('appname',[dependencies]);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+ every module has a root scope(like the head of the family)
+ 
+ a module will be injected to the HTML   
+    
+---------------------------------------------------------------------------
+
+note:
+
+
+    one controller for one HTML.
+    
+    how to create a controller?
+    
+    
+    myapp.controller('name',[function(){}])
+    
+    
+    
+    
+    
+    <div ng-controller="name">
+    {{}}
+    </div>
+
+---------------------------------------------------------------------------------
+
+
+Simple Example:
+
+ <!DOCTYPE html>
+<html ng-app="vhr_app">
+
+<head>
+  <script data-require="angular.js@1.5.8" data-semver="1.5.8" src="https://code.angularjs.org/1.5.8/angular.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+</head>
+
+<body ng-controller="vhr_controller">
+<center><h1 ng-bind="name"></h1> 
+<input  ng-model="name">         <!--two way data binding binding -->
+</center> 
+</body>
+
+
+</html>  
+
+
+
+
+
+-----javascript-------
+
+
+angular.module('vhr_app',[]);
+
+angular.module('vhr_app')
+.controller('vhr_controller',['$scope',function($scope){
+  $scope.name="vhr121"
+  
+}])  
+    
+    
+    
+
+    
+    
+    
+
