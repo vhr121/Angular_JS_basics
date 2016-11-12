@@ -122,7 +122,7 @@ Simple Example:
 </head>
 
 <body ng-controller="vhr_controller">
-<center><h1 ng-bind="name"></h1> 
+<center><h1 ng-bind="name"></h1>  <!--one way data binding----->
 <input  ng-model="name">         <!--two way data binding binding -->
 </center> 
 </body>
@@ -137,16 +137,161 @@ Simple Example:
 -----javascript-------
 
 
-angular.module('vhr_app',[]);
+angular.module('vhr_app',[]);   //set module
 
-angular.module('vhr_app')
+angular.module('vhr_app')       //get module
 .controller('vhr_controller',['$scope',function($scope){
   $scope.name="vhr121"
   
 }])  
+
+
+
+--------------------------------------------------------------------------------------------
+    
+    
+expression is used for one way data binding 
+
+{{1+2}}
+{{a+b}}
+{{obj[index]}}
+
+-----------------------------------
+What is Directives?
+
+
+    Resuable components that gives extra features to the documnet. Directives tells the browser that the documnet contains angular-js.
+    
+    ex- ng-app,ng-controller,ng-repeat,ng-bind,ng-model.
     
     
     
+    Note: anything that starts with ng are inbuilt directives.
+    
+    
+    
+    ng-app:
+        create root scope and boot-strap kickstarter
+        
+    
+    
+    types of directives:
+                        
+                        js                      
+    
+    A(attributes)   {restrict:'A'}      <div attr> </attr>
+    
+    
+    C(class)        {restrict:'C'}      <div class="name">
+    
+    M(comment)      {restrict:'M'}
+    
+    E(element)      {restrict:'E'}      <tag></tag>
+    
+----------------------------------------create the custom directive--------------------------
+
+<!DOCTYPE html>
+<html ng-app="my_app">
+
+<head>
+  <script data-require="angular.js@1.5.8" data-semver="1.5.8" src="https://code.angularjs.org/1.5.8/angular.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js">
+    
+  </script>
+</head>
+
+<body>
+
+<test-directive></test-directive>
+
+<script>
+  var app=angular.module("my_app",[]);
+  app.directive("testDirective",function(){
+    return {
+        restrict: "E",
+      template:"<h1>added a directive</h1>"
+    };
+  });
+</script>
+</body>
+
+
+</html>
+
+-------------------------------------two way data binding--------------------------------
+
+
+any change in the view will affect model and vice versa is called two way data binding. ex: ng-model
+
+
+----------------------------------one way data binding------------------
+
+there is no syncronzation b/w view and model ex- ng-bind
+
+
+
+-----------------------scope-------------------------------------------------
+
+
+object that refers to application model.
+
+the object will be accessable within that scope only.
+
+
+
+
+                                            ng-app = root scope
+                                            /                \
+                                               
+                                           /                  \
+                                         ng-controller        ng-controller scope
+                                         
+                                         
+                                         
+$broadcast----> root to all scope
+
+
+$ emit---->child to its ancestors only.
+
+
+
+-----------------------scope life cycle-----------------------------------------
+
+
+
+1. Creation
+2. watch registration
+3. Model Mutation
+4. Mutation Observation:
+
+
+
+
+            -----------------------------Digest cycle explaining two way data binding--------------------------
+
+            old value----->$apply(root directive)---->$digest(current drective)-------->$watch----->the new value updation
+
+
+
+5.  Scope destruction:
+    
+        parent destroyes the scope of a child when its no longer needed using $scope.destruct()
+        
+        
+        
+Filters:
+
+    used to process the data before displaying. |
+
+                                            
+
+
+
+
+
+
+
 
     
     
